@@ -5,7 +5,7 @@ from face_detector import FaceDetector
 
 
 def main():
-    parser = ArgumentParser()
+    parser: ArgumentParser = ArgumentParser()
     parser.add_argument('--source', type=str, default='0', help='The source file or the camera id')
     parser.add_argument('--model', type=str, default='weights/best_age_estimator_resnet.h5', help='The model file path')
     parser.add_argument('--draw', type=bool, action=BooleanOptionalAction, default=True,

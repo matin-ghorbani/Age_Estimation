@@ -29,7 +29,7 @@ class FaceDetector:
 
         return result_img, bboxs
 
-    def estimate_age(self, img: cv.typing.MatLike):
+    def estimate_age(self, img: cv.typing.MatLike) -> float:
         img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
         img = cv.resize(img, (124, 124))
         img = img / 255.
