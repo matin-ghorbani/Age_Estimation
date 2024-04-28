@@ -22,27 +22,32 @@ def main():
     cap = cv.VideoCapture(opt.source)
     while True:
         success, frame = cap.read()
-        if not success:
-            raise Exception('Could not read frames from source file or camera.')
-        result_frame, bboxs = detector.detect_face(frame, draw=opt.draw)
+        if success:
+            result_frame, bboxs = detector.detect_face(frame, draw=opt.draw)
 
-        if len(bboxs) > 0:
-            for bbox in bboxs:
-                x1, y1, x2, y2 = bbox
-                face = frame[y1: y2, x1: x2]
-                age = detector.estimate_age(face)
+            if len(bboxs) > 0:
+                for bbox in bboxs:
+                    x1, y1, x2, y2 = bbox
+                    face = frame[y1: y2, x1: x2]
+                    age = detector.estimate_age(face)
 
-                if not opt.draw:
-                    org = ((x1 + x2) // 2, (y1 + y2) // 2)
-                else:
-                    org = (x1, y2 + 20)
+                    if not opt.draw:
+                        org = ((x1 + x2) // 2, (y1 + y2) // 2)
+                    else:
+                        org = (x1, y2 + 20)
 
-                cv.putText(result_frame, f'Age: {age}', org,
-                           cv.FONT_HERSHEY_PLAIN, 1.0, (255, 255, 255), 2)
+                    cv.putText(result_frame, f'Age: {age}', org,
+                            cv.FONT_HERSHEY_PLAIN, 1.0, (0, 0, 0), 2)
 
-        cv.imshow('webcam', result_frame)
-        if cv.waitKey(1) & 0xFF == 27:
+            cv.imshow('webcam', result_frame)
+            if cv.waitKey(1) & 0xFF == 27:
+                break
+
+        else:
+            # raise Exception('Could not read frames from source file or camera.')
+            print('Could not read frames from source file or camera.')
             break
+
     cap.release()
 
 

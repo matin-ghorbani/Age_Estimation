@@ -34,7 +34,7 @@ def main():
                 org = (x1, y2 + 20)
 
             cv.putText(result_img, f'Age: {age}', org,
-                       cv.FONT_HERSHEY_PLAIN, 1.0, (255, 255, 255), 2)
+                       cv.FONT_HERSHEY_PLAIN, 1.0, (0, 0, 0), 2)
 
     if opt.show:
         cv.imshow('Result Image', result_img)
