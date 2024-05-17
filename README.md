@@ -8,6 +8,9 @@
 pip install -r requirements.txt
 ```
 #### ***You can also download my age estimator model from [here](https://drive.google.com/file/d/1-AV5YBOrg1QjalfOzf4-kZrj4xD6NzP_/view?usp=sharing)***
+*Traning Information:*
+- Validation Loss: *5.6115*
+- Training Loss: *2.4291*
 
 ## How to process on an image:
 #### *Note: I used OpenCV cascading to detect faces. You can use any other face detector.*
